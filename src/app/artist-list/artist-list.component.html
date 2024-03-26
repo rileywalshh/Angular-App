@@ -1,0 +1,68 @@
+<!--This is the button container for buttons that can alter the table, It would have included buttons for hiding and deleting artists. It only has a button that will change a normal artists to a featured artists.-->
+<div class="action-buttons-cont">
+    <input [(ngModel)]="searchId" placeholder="Search Artist ID">
+    <button class="action-button" (click)="searchAndFeatureArtist()">toggle artists featured</button>
+</div>
+
+<!--This is the table for all artists added through the form, it stores the relevant data in each row for a better user experience and ease of readability.-->
+<h2>Artists List</h2>
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Date of Birth</th>
+      <th>Gender</th>
+      <th>Contact Info</th>
+      <th>Artworks</th>
+      <th>Featured</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!--This loops over the array of artists to create a new row for each artists entry.-->
+    <tr *ngFor="let artist of artists">
+        <td>{{ artist.id }}</td>
+      <td>{{ artist.name }}</td>
+      <!--Here it uses the date pipe to formate dob.-->
+      <td>{{ artist.dob | date }}</td>
+      <td>{{ artist.gender }}</td>
+      <td>{{ artist.contactInfo }}</td>
+      <td>
+        <ul>
+          <li *ngFor="let artwork of artist.artworks">{{ artwork.type }} - {{ artwork.exhibitionDate | date }}</li>
+        </ul>
+      </td>
+      <!--Determines if an artists is featured.-->
+      <td>{{ artist.isFeatured ? 'Yes' : 'No' }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<!--This table is for the featured artists, it follows the same logic as above.-->
+<h2>Featured Artists</h2>
+<table class="featured-artists">
+    <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Date of Birth</th>
+          <th>Gender</th>
+          <th>Contact Info</th>
+          <th>Artworks</th>
+          <th>Featured</th>
+        </tr>
+      </thead>
+  <tr *ngFor="let artist of featuredArtists">
+    <td>{{ artist.id }}</td>
+    <td>{{ artist.name }}</td>
+    <td>{{ artist.dob | date }}</td>
+    <td>{{ artist.gender }}</td>
+    <td>{{ artist.contactInfo }}</td>
+    <td>
+      <ul>
+        <li *ngFor="let artwork of artist.artworks">{{ artwork.type }} - {{ artwork.exhibitionDate | date }}</li>
+      </ul>
+    </td>
+    <td>{{ artist.isFeatured ? 'Yes' : 'No' }}</td>
+  </tr>
+</table>

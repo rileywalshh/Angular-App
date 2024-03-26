@@ -1,0 +1,74 @@
+/*This is the styling of the main parent page app.component. that will affect all HTML pages.*/
+.navbar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center; 
+    background-color: #61ca80; 
+    padding: 10px 0; 
+    border-radius: 15px;
+  }
+  
+  .navbar a {
+    color: white;
+    padding: 10px 15px;
+    text-decoration: none;
+  }
+  
+  .navbar a:hover {
+    background-color: #56b472;
+    border-radius: 15px;
+  }
+
+  body {
+    height: 100%;
+    margin: 0;
+  }
+
+  .site-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  .content {
+    flex: 1;
+    
+    padding-top: 50px; 
+  }
+
+  .site-footer {
+    background-color: #61ca80;
+    color: white;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .footer-content {
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 20px;
+    border-bottom: 1px solid white;
+  }
+  
+  .footer-content div {
+    padding: 10px;
+  }
+  
+  .footer-content h3 {
+    margin-top: 0;
+  }
+  
+  .footer-bottom {
+    margin-top: 20px;
+  }
+  .centered-content {
+    text-align: center;
+  }
+  
+  @media (max-width: 600px) {
+    .footer-content {
+      flex-direction: column;
+    }
+  }
+  
+  

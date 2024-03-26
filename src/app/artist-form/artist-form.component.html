@@ -1,0 +1,55 @@
+<!--This is the form that the artists will interact with to submit their information.-->
+
+<!--This part of the form is responsible for taking the artist name, and checking if the field has been filled.-->
+<form [formGroup]="artistForm" (ngSubmit)="onSubmit()">
+    <h2 style="text-align: center;">New artist form</h2>
+    <label>name: </label>
+    <input formControlName="name" placeholder="Name">
+    <div *ngIf="artistForm.controls.name.invalid && artistForm.controls.name.touched">
+      Name is required.
+    </div>
+  
+    <!--This part of the form is for the date of birth of the artists, and checks if a value is entered.-->
+    <label>Date of Birth: </label>
+    <input type="date" formControlName="dateOfBirth" id="dateOfBirth">
+    <div *ngIf="artistForm.controls.dateOfBirth.invalid && artistForm.controls.dateOfBirth.touched">
+      Date of birth is required.
+    </div>
+    
+    <!--This part of the form is for the gender of the artist, it gives them a select set of options to choose from.-->
+    <label>gender: </label>
+    <select formControlName="gender">
+      <option value="">Select Gender</option>
+      <option value="Female">Female</option>
+      <option value="Male">Male</option>
+      <option value="Unspecified">Unspecified</option>
+      <option value="Anonymous">Prefer not to say</option>
+    </select>
+
+    <!--This part of the form is for contact information to reach the artist, the method chosen was email.-->
+     <label>email: </label>
+     <input type="email" formControlName="contactInfo" placeholder="Email">
+     <div *ngIf="artistForm.controls.contactInfo.invalid && artistForm.controls.contactInfo.touched">
+       Email is required.
+     </div>
+     <div *ngIf="artistForm.controls.contactInfo.errors?.['contactInfo'] && artistForm.controls.contactInfo.touched">
+       Please enter a valid email address.
+     </div>
+  
+     <!--This part of the form is for the artwork type and information about it.-->
+    <label>artwork type: </label>
+    <select formControlName="artworkType">
+        <option value="">Select Artwork Type</option>
+        <option value="painting">Painting</option>
+        <option value="sculpture">Sculpture</option>
+        <option value="photograph">photograph</option>
+        <option value="video-art">Video art</option>
+        <option value="digital-art">Digital art</option>
+         <option value="print-making">Print making</option>
+    </select>
+    <!--This part of the form is for the exhibition date that the artist wishes to showcase.-->
+    <label>exhibition date: </label>
+    <input type="date" formControlName="exhibitionDate">
+    <textarea formControlName="notes" placeholder="Notes"></textarea>
+    <button type="submit" [disabled]="artistForm.invalid">Add Artist</button>
+  </form>
